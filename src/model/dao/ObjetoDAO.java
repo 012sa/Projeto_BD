@@ -76,9 +76,30 @@ public class ObjetoDAO {
             ConnectionFactory.closeConnection(con, stmt);
         }   
     }
-    
-    
-    
+      
+        public void update(Objeto obj, Objeto obj2) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("UPDATE Objeto_tb SET nomeObjeto = ?, statusObj = ? descricao = ?, localizacao = ?, fornecedor = ?, responsavel = ? WHERE numeroPatrimonio = ?");
+            stmt.setString(1,obj2.getNomeObjeto());
+            stmt.setString(2,obj2.getStatusObj());
+            stmt.setString(3,obj2.getDescricao());
+            stmt.setString(4,obj2.getLocalizacao());
+            stmt.setString(5,obj2.getFornecedor());
+            stmt.setString(6,obj2.getResponsavel());
+            stmt.setInt(7,obj.getNumeroPatrimonio());
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Atualização feita com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar: "+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con,stmt);
+        }
+    }
     
     
 }

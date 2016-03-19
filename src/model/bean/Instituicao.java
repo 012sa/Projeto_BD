@@ -67,7 +67,7 @@ public class Instituicao {
 
     
         public String toString() {
-        return "Estado=" + getEstado()+ ", Campus=" + getCampus() + '}';
+        return "id:" + getIdCampus() + "Estado:" + getEstado()+ ", Campus:" + getCampus() + '}';
         }
         
     public int hashCode() {

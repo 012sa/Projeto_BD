@@ -71,7 +71,25 @@ public class UsuarioDAO {
         }   
     }
     
-    
-    
+    public void update(Usuario user, Usuario user2) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("UPDATE usuario_tb SET nickname = ?, senha = ? WHERE idUsu = ?");
+            stmt.setString(1,user2.getNickname());
+            stmt.setString(2,user2.getSenha());
+            stmt.setInt(3,user.getIdUsu());
+            
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Atualização feita com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar: "+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con,stmt);
+        }
+    }
     
 }

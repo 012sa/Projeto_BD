@@ -30,12 +30,12 @@ public class HistoricoObjDAO {
             stmt = con.prepareStatement("INSERT INTO historicoObj_tb (dt NOW(), Objeto, numPatrimonio, statusObjeto, responsable, motivo, usu ) VALUES (?,?,?,?,?,?,?)");
             //get dos atrubutos
             stmt.setDate(1,his.getDt());
-            stmt.setString(1,his.getObjeto());
-            stmt.setInt(2,his.getNumPatrimonio());
-            stmt.setString(3,his.getStatusObjeto());
-            stmt.setString(4,his.getResponsable());
-            stmt.setString(5,his.getMotivo());
-            stmt.setString(6,his.getUsu());
+            stmt.setString(2,his.getObjeto());
+            stmt.setInt(3,his.getNumPatrimonio());
+            stmt.setString(4,his.getStatusObjeto());
+            stmt.setString(5,his.getResponsable());
+            stmt.setString(6,his.getMotivo());
+            stmt.setString(7,his.getUsu());
             
             stmt.executeUpdate();
             
@@ -86,12 +86,12 @@ public class HistoricoObjDAO {
         try {
             stmt = con.prepareStatement("UPDATE HistoricoObj_tb SET Objeto = ?, numPatrimonio = ?, statusObjeto = ?, responsable = ?, motivo = ?, usu = ? WHERE dt NOW()= ?;");
             stmt.setString(1,his2.getObjeto());
-            stmt.setInt(1,his2.getNumPatrimonio());
-            stmt.setString(1,his2.getStatusObjeto());
-            stmt.setString(1,his2.getResponsable());
-            stmt.setString(1,his2.getMotivo());
-            stmt.setString(1,his2.getUsu());
-            stmt.setDate(2,his.getDt());
+            stmt.setInt(2,his2.getNumPatrimonio());
+            stmt.setString(3,his2.getStatusObjeto());
+            stmt.setString(4,his2.getResponsable());
+            stmt.setString(5,his2.getMotivo());
+            stmt.setString(6,his2.getUsu());
+            stmt.setDate(7,his.getDt());
             
             stmt.executeUpdate();
             

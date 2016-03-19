@@ -71,4 +71,25 @@ public class PatrimonioDAO {
         }   
     }
     
+    public void update(Patrimonio p, Patrimonio p2) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("UPDATE patrimonio_tb SET nomePatrimonio = ? WHERE codPatrimonio = ?");
+            stmt.setString(1,p2.getNomePatrimonio());
+            stmt.setInt(2,p.getCodPatrimonio());
+            
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Atualização feita com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar: "+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con,stmt);
+        }
+    }
+    
+    
 }

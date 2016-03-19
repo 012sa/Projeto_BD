@@ -53,7 +53,7 @@ public class Concorrente {
         
    
         public String toString() {
-        return "Nome da Empresa:" + getNomeEmpresa();
+        return "id:" + getIdEmpresa() + "Nome da Empresa:" + getNomeEmpresa();
         }
 
     

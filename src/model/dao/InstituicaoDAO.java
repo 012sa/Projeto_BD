@@ -22,7 +22,7 @@ import model.bean.Instituicao;
  */
 public class InstituicaoDAO implements instituicao_int {
     
-    public void create(Instituicao ifpb){
+    public void create(Instituicao inst){
         
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -31,8 +31,8 @@ public class InstituicaoDAO implements instituicao_int {
             //onde ficará o insert
             stmt = con.prepareStatement("INSERT INTO instituicao_tb (estado, campus) VALUES (?,?)");
             //get dos atrubutos
-            stmt.setString(1,ifpb.getCampus());
-            stmt.setString(2,ifpb.getEstado());
+            stmt.setString(1,inst.getCampus());
+            stmt.setString(2,inst.getEstado());
             
             stmt.executeQuery();
             
@@ -49,7 +49,7 @@ public class InstituicaoDAO implements instituicao_int {
         
     }
     
-    public void delete(Instituicao ifpb){
+    public void delete(Instituicao inst){
         
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -58,7 +58,7 @@ public class InstituicaoDAO implements instituicao_int {
             //onde ficará o insert
             stmt = con.prepareStatement("DELETE FROM instituicao_tb WHERE campus = ? ");
             //get dos atrubutos
-            stmt.setString(1,ifpb.getCampus());
+            stmt.setString(1,inst.getCampus());
            
             
             stmt.executeQuery();
@@ -75,7 +75,7 @@ public class InstituicaoDAO implements instituicao_int {
         }   
     }
     
-    public void update(Instituicao inst1, Instituicao inst2) {
+    public void update(Instituicao inst, Instituicao inst2) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
@@ -83,7 +83,7 @@ public class InstituicaoDAO implements instituicao_int {
             stmt = con.prepareStatement("UPDATE Instituicao_tb SET campus = ?, estado = ? WHERE idCampus = ?");
             stmt.setString(1,inst2.getCampus());
             stmt.setString(2,inst2.getEstado());
-            stmt.setInt(3,inst1.getIdCampus());
+            stmt.setInt(3,inst.getIdCampus());
             
             stmt.executeUpdate();
             

@@ -83,10 +83,9 @@ public class LicitacaoDAO {
         try {
             stmt = con.prepareStatement("UPDATE licitacao_tb SET Objeto = ?, fornecedor = ?, preco = ? WHERE codEdital= ?;");
             stmt.setString(1,li2.getObjeto());
-
-            stmt.setString(1,li2.getFornecedor());
-            stmt.setDouble(1,li2.getPreco());
-            stmt.setInt(2,li.getCodEdital());
+            stmt.setString(2,li2.getFornecedor());
+            stmt.setDouble(3,li2.getPreco());
+            stmt.setInt(4,li.getCodEdital());
 
             
             stmt.executeUpdate();
@@ -97,13 +96,6 @@ public class LicitacaoDAO {
         }finally{
             ConnectionFactory.closeConnection(con,stmt);
         }
-
-
-
-    
-    
-    
-    
     }
     
 }
