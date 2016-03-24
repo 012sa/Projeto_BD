@@ -6,7 +6,7 @@
 package model.dao;
 
 
-import Interface.instituicao_int;
+
 import connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +20,7 @@ import model.bean.Instituicao;
  *
  * @author Jaqueline
  */
-public class InstituicaoDAO implements instituicao_int {
+public class InstituicaoDAO {
     
     public void create(Instituicao inst){
         
