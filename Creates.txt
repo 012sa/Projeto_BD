@@ -1,0 +1,88 @@
+CREATE TABLE usuario_tb (
+    idUsu int UNSIGNED AUTO_INCREMENT NOT NULL,
+    PRIMARY KEY (idUsu)
+    nickname varchar(30) NOT NULL, 
+    senha varchar(20) NOT NULL,
+    );
+    
+CREATE TABLE licitacao_tb (
+    objeto varchar(256),
+	fornecedor varchar(30),
+	codEdital int UNSIGNED AUTO_INCREMENT NOT NULL,
+	PRIMARY KEY (codEdital),
+	preco double NOT NULL
+);
+    
+    CREATE TABLE instituicao_tb ( 
+	idCampus INT,	
+PRIMARY KEY (campus),
+campus varchar(40),
+	estado varchar(30)
+);
+
+CREATE TABLE tipo_tb (
+	nome VARCHAR (100),
+	codTipo INT,
+	PRIMARY KEY (codTipo)
+);
+
+CREATE TABLE patrimonio_tb (
+	nomePatrimonio varchar(256) NOT NULL,
+	codPatrimonio INT AUTO_INCREMENT,
+    PRIMARY KEY (codPatrimonio),
+    codigoTipo INT,
+	CONSTRAINT fk_tipo_patrimonio FOREIGN KEY (codigoTipo) REFERENCES tipo_tb (codTipo)
+);
+
+CREATE TABLE objeto_tb (
+	numeroPatrimonio int UNSIGNED AUTO_INCREMENT NOT NULL,
+	PRIMARY KEY (numeroPatrimonio),
+    	nomeObjeto varchar(256),
+    	statusObj varchar(13),
+    	descricao varchar(500),
+	localizacao varchar(256),
+	fornecedor varchar(30),
+	responsavel varchar(40),
+	numero_patrimonio INT,
+CONSTRAINT fk_nm_patrimonio FOREIGN KEY (numero_patrimonio) REFERENCES patrimonio_tb (codPatrimonio)
+);
+
+CREATE TABLE concorrente_tb (
+	nomeEmpresa varchar(50),
+	idEmpresa INT AUTO_INCREMENT, 
+	PRIMARY KEY (idEmpresa),
+	codigoEdital int UNSIGNED,
+	CONSTRAINT fk_concorrente_tb FOREIGN KEY (codigoEdital) REFERENCES licitacao_tb (codEdital)
+);
+
+    
+CREATE TABLE instituicao_licitacao_tb (
+    cod_lista_li int UNSIGNED,
+	PRIMARY KEY (cod_lista_li),
+	camp_instituicao_licitacao varchar(40),
+	CONSTRAINT fk_instituicao_licitacao_tb FOREIGN KEY (camp_instituicao_licitacao) REFERENCES instituicao_tb (campus),
+	codigo_instituicao_licitacao int UNSIGNED,
+	CONSTRAINT fk_instituicao_licitacao_tb2 FOREIGN KEY (codigo_instituicao_licitacao) REFERENCES licitacao_tb (codEdital)
+);
+
+
+CREATE TABLE instituicao_patrimonio_tb (
+	cod_relacao int UNSIGNED,
+	PRIMARY KEY (cod_relacao),
+    camp_instituicao varchar(40),
+    codigo_patrimonio int AUTO_INCREMENT,
+	CONSTRAINT fk_instituicao_patrimonio_tb FOREIGN KEY (camp_instituicao) REFERENCES instituicao_tb (campus),
+	CONSTRAINT fk_instituicao_patrimonio_tb2 FOREIGN KEY (codigo_patrimonio) REFERENCES patrimonio_tb (codPatrimonio)
+);
+
+CREATE TABLE historicoObj (
+    dt DATE,
+    PRIMARY KEY (dt),
+    objeto VARCHAR(256),
+    codTipo INT,
+    numPatrimonio INT,
+    statusObjeto VARCHAR(30),
+    responsavel VARCHAR(30),
+	motivo VARCHAR(256) NOT NULL,
+	usuario VARCHAR(30) NOT NULL
+); 
