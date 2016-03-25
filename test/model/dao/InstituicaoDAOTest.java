@@ -21,30 +21,15 @@ public class InstituicaoDAOTest {
     public InstituicaoDAOTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
     /**
      * Test of create method, of class InstituicaoDAO.
      */
     @Test
     public void testCreate() {
         System.out.println("create");
-        Instituicao ifpb =  new Instituicao("Campina Grande", "PB");
+        Instituicao ifpb =  new Instituicao("PB", "Campina Grande");
         InstituicaoDAO instance = new InstituicaoDAO();
+        assertEquals("Campina Grande",ifpb.getCampus() );
         instance.create(ifpb);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

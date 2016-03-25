@@ -54,7 +54,7 @@ public class Instituicao {
 	 * @return
 	 */
 	public String getCampus() {
-		return "sim";
+		return campus;
 	}
 
 	/**
