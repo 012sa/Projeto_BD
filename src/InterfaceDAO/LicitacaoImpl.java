@@ -2,7 +2,7 @@
  * @autor: Jaqueline Ribeiro, Lorena Nascimento e Sarah Cabral
  * Controle Patrimonial
  */
-package Implementations;
+package InterfaceDAO;
 
 import model.bean.Licitacao;
 
